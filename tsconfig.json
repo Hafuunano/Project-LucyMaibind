@@ -1,8 +1,5 @@
 {
   "files": [],
-  "compilerOptions": {
-    "checkJs": false
-  },
   "references": [
     {
       "path": "./tsconfig.node.json"
