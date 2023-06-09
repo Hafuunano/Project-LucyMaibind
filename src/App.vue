@@ -1,12 +1,14 @@
-<script setup lang="ts">
-
-import {reactive, ref} from 'vue'
-import ElNotification from "element-plus"
+<script lang="ts" setup>
+import {reactive, ref,getCurrentInstance} from 'vue'
+import { ElNotification } from 'element-plus'
 
 const formInline = reactive({
   qq: '',
   session: '',
 })
+
+const { appContext } = getCurrentInstance()!
+ElNotification({}, appContext)
 
 async function onSubmit () {
   const qqID = formInline.qq
