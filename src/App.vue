@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import {reactive, ref} from 'vue'
-import {ElNotification} from "element-plus";
+import ElNotification from "element-plus"
 
 const formInline = reactive({
   qq: '',
