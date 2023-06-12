@@ -6,6 +6,11 @@ const formInline = reactive({
   session: '',
 })
 
+interface replyFormat {
+  token: string;
+  md5: string;
+}
+
 async function onSubmit () {
   const qqID = formInline.qq
   const Session = formInline.session
@@ -13,17 +18,20 @@ async function onSubmit () {
     return
   }
   // do not check the session is valid.
-  const resp = await fetch('https://api.himoyo.cn/pgr/bind',{method:'post',headers: { 'Content-Type': 'application/json'},body:JSON.stringify(formInline)})
+  console.log(JSON.stringify(formInline))
+  const resp = await fetch('https://api.impart.icu/api/',{method:'post',body:JSON.stringify(formInline)})
   if (resp.ok) {
-    const data = await resp.json()
-    const { key } = data
-    key.value = token;
+    const data : replyFormat = await resp.json()
+    hash = data.token;
+    md5 = data.md5;
+    isDataSent.value = true;
   }
 }
-const token = ref('');
 
+let hash;
+let md5;
 
-const isDataSent =ref(true)
+const isDataSent = ref(false)
 </script>
 
 <template>
@@ -42,13 +50,12 @@ const isDataSent =ref(true)
         <br><br>
       QQ:   <input v-model="formInline.qq" placeholder="Please Type Your QQ" class="inputbox" required="required" type="text">
         <br><br>
-        <button @click="onSubmit">提交</button>
       </form>
-
+      <button @click="onSubmit">提交</button>
     </div>
     <br>
     <div class="result" v-if="isDataSent">
-    请在 Lucy 端输入 ： /pgr bind {{ token }} 即可
+    请在 Lucy 端输入 ： /pgr bind {{ hash }} {{ md5 }}
     </div>
   </div>
 </div>
@@ -97,11 +104,12 @@ button {
     }
     .result{
       top: 10px;
+      font-size: 14px;
       font-family: "Noto Sans",sans-serif;
-      font-size: 16px;
       padding-left: 5%;
       padding-right: 5%;
       padding-bottom: 5%;
+      word-break: break-all;
     }
     .form-path {
       width: auto;
