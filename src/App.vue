@@ -28,8 +28,8 @@ async function onSubmit () {
   }
 }
 
-let hash;
-let md5;
+let hash:string;
+let md5:string;
 
 const isDataSent = ref(false)
 </script>
@@ -46,9 +46,9 @@ const isDataSent = ref(false)
     </div>
     <div class="form-path">
       <form >
-     Session:    <input v-model="formInline.session" placeholder="Please Type Your Session" class="inputbox" required="required">
+     Session:    <input v-model="formInline.session" placeholder="Please Type Your Session" class="inputbox" required />
         <br><br>
-      QQ:   <input v-model="formInline.qq" placeholder="Please Type Your QQ" class="inputbox" required="required" type="text">
+      QQ:   <input v-model="formInline.qq" placeholder="Please Type Your QQ" class="inputbox" required type="text" />
         <br><br>
       </form>
       <button @click="onSubmit">提交</button>
