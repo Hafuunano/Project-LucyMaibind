@@ -1,26 +1,15 @@
-<script lang="ts" setup>
-import {reactive, ref,getCurrentInstance} from 'vue'
-// @ts-ignore
-import  {ElNotification } from 'element-plus'
+<script lang="ts" setup xmlns="http://www.w3.org/1999/html">
+import {reactive, ref} from 'vue'
 
 const formInline = reactive({
   qq: '',
   session: '',
 })
 
-const { appContext } = getCurrentInstance()!
-ElNotification({}, appContext)
-
 async function onSubmit () {
   const qqID = formInline.qq
   const Session = formInline.session
-
   if ( qqID == "" || Session == "" ) {
-    ElNotification({
-      title: '错误',
-      message: '请检查您的数据填写是否正确',
-      type: 'error',
-    });
     return
   }
   // do not check the session is valid.
@@ -29,23 +18,12 @@ async function onSubmit () {
     const data = await resp.json()
     const { key } = data
     key.value = token;
-    isDataSent = true;
-  } else {
-    ElNotification({
-      title: '错误',
-      message: resp.statusText,
-      type: 'error',
-    })
-    return
   }
 }
-/*
-  code
-  data:["bindkey"]
- */
 const token = ref('');
-let isDataSent: boolean = false;
 
+
+const isDataSent =ref(true)
 </script>
 
 <template>
@@ -59,16 +37,16 @@ let isDataSent: boolean = false;
       <br>在这边填入你的相关信息，将账户进行绑定，绑定后将会返回一串校验码,请使用校验码进行绑定<br>
     </div>
     <div class="form-path">
-    <el-form :model="formInline" >
-      <el-form-item label="QQ" :rules="[{ required: true}]">
-        <el-input  v-model.number="formInline.qq" placeholder="Type Your qq" />
-      </el-form-item>
-      <el-form-item label="Session" >
-        <el-input v-model="formInline.session" placeholder="Type your Session" />
-      </el-form-item>
-    </el-form>
-      <button @click="onSubmit">提交</button>
+      <form >
+     Session:    <input v-model="formInline.session" placeholder="Please Type Your Session" class="inputbox" required="required">
+        <br><br>
+      QQ:   <input v-model="formInline.qq" placeholder="Please Type Your QQ" class="inputbox" required="required" type="text">
+        <br><br>
+        <button @click="onSubmit">提交</button>
+      </form>
+
     </div>
+    <br>
     <div class="result" v-if="isDataSent">
     请在 Lucy 端输入 ： /pgr bind {{ token }} 即可
     </div>
@@ -117,13 +95,6 @@ button {
       padding-left: 5%;
       padding-right: 5%;
     }
-    .form-path {
-      position: relative;
-      padding-top: 50px;
-      padding-right: 10%;
-      padding-left: 10%;
-      width: 40%;
-    }
     .result{
       top: 10px;
       font-family: "Noto Sans",sans-serif;
@@ -131,6 +102,15 @@ button {
       padding-left: 5%;
       padding-right: 5%;
       padding-bottom: 5%;
+    }
+    .form-path {
+      width: auto;
+      height: auto;
+      position: relative;
+      margin-left: 5%;
+      margin-top: 5%;
+      border:transparent;
+
     }
   }
 }
