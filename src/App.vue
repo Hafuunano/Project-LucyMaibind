@@ -45,7 +45,6 @@ function linkToIntro() {
 <template>
   <div class="inline-block">
     <font-awesome-icon icon="cat" class="type" @click="linkToBook" />
-    
     <font-awesome-icon icon="book" class="type2" @click="linkToIntro" />
     </div>
 <div class="container">
@@ -121,7 +120,7 @@ function linkToIntro() {
     min-height: 400px;
     border: 2px solid rgb(240, 216, 220);
     border-radius: 10px;
-    background-color: rgb(250, 216, 222);
+    background-color: rgb(255, 255, 255);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     padding-bottom: 5%;
     .index {
@@ -147,10 +146,9 @@ function linkToIntro() {
       margin-left: 5%;
       margin-top: 5%;
       input {
-        border-color: #66afe9;
-      outline-style: none ;
-      border: 0px;
-      font-family: "Microsoft soft";
+        outline-style: none ;
+        border: 0 #66afe9;
+        font-family: "Microsoft soft",serif;
       }
     }
   }
