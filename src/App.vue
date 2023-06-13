@@ -23,13 +23,11 @@ async function onSubmit () {
   if (resp.ok) {
     const data : replyFormat = await resp.json()
     hash = data.token;
-    md5 = data.md5;
     isDataSent.value = true;
   }
 }
 
 let hash:string;
-let md5:string;
 
 const isDataSent = ref(false)
 </script>
@@ -55,7 +53,7 @@ const isDataSent = ref(false)
     </div>
     <br>
     <div class="result" v-if="isDataSent">
-    请在 Lucy 端输入 ： /pgr bind {{ hash }} {{ md5 }}
+    请在 Lucy 端输入 :  /pgr bind {{ hash }}
     </div>
   </div>
 </div>
