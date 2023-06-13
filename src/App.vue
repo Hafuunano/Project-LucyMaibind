@@ -59,7 +59,7 @@ function linkToIntro() {
       <br>Android 端查询 Session App : <a href="https://cdn.himoyo.cn/uploads/%E8%8E%B7%E5%8F%96Token_1.0.apk">Token (By MiViQ)</a>
     </div>
     <div class="form-path">
-      <form >
+      <form>
      Session:    <input v-model="formInline.session" placeholder="Please Type Your Session" class="inputbox" required />
         <br><br>
       QQ:   <input v-model="formInline.qq" placeholder="Please Type Your QQ" class="inputbox" required type="text" />
@@ -81,7 +81,7 @@ function linkToIntro() {
   width: 100%;
   height: 100%;
   background: linear-gradient(-45deg, #ffffff 25%, #87cefa 25%, #87cefa 50%, #ffffff 50%, #ffffff 75%, #87cefa 75%);
-  background-size: 30px 30px;
+  background-size: 40px 40px;
   .inline-block {
     height: 125px;
     width: 100%;
@@ -109,7 +109,7 @@ function linkToIntro() {
     }
   }
 .container {
-  width: 50%;
+  width: 80%;
   height: auto;
   position: relative;
   margin: auto;
@@ -146,8 +146,12 @@ function linkToIntro() {
       position: relative;
       margin-left: 5%;
       margin-top: 5%;
-      border:transparent;
-
+      input {
+        border-color: #66afe9;
+      outline-style: none ;
+      border: 0px;
+      font-family: "Microsoft soft";
+      }
     }
   }
 }
