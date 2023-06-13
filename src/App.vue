@@ -8,7 +8,7 @@ const formInline = reactive({
 
 interface replyFormat {
   token: string;
-  md5: string;
+  expire: string;
 }
 
 async function onSubmit () {
