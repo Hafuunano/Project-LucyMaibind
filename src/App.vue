@@ -44,6 +44,7 @@ function linkToIntro() {
 
 <template>
   <div class="inline-block">
+    <div class="cat"> Meow? OwQ</div>
     <font-awesome-icon icon="cat" class="type" @click="linkToBook" />
     <font-awesome-icon icon="book" class="type2" @click="linkToIntro" />
     </div>
@@ -81,6 +82,7 @@ function linkToIntro() {
   height: 100%;
   background: linear-gradient(-45deg, #ffffff 25%, #87cefa 25%, #87cefa 50%, #ffffff 50%, #ffffff 75%, #87cefa 75%);
   background-size: 40px 40px;
+    font-family: "Noto Sans", sans-serif;
   .inline-block {
     height: 125px;
     width: 100%;
@@ -88,6 +90,14 @@ function linkToIntro() {
     right: 10px;
     position: relative;
     background: #87cefa;
+    .cat {
+      position: relative;
+      top: 30%;
+      left: 3%;
+      font-size: 30px;
+
+      color: white;
+    }
   .type {
       position: absolute;
       color: white;
@@ -111,8 +121,8 @@ function linkToIntro() {
   width: 80%;
   height: auto;
   position: relative;
-  margin: auto;
-  margin-top: 30px;
+  margin: 30px auto auto;
+
   .format {
     position: relative;
     width: auto;
