@@ -1,8 +1,11 @@
 import { createApp } from 'vue'
 import App from "./App.vue"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBook, faCat } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-const app = createApp(App)
+library.add(faBook,faCat)
 
-
-app.mount('#app')
-
+createApp(App)
+.component('font-awesome-icon', FontAwesomeIcon)
+.mount('#app')
