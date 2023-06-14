@@ -15,21 +15,32 @@ async function onSubmit () {
   const qqID = formInline.qq
   const Session = formInline.session
   if ( qqID == "" || Session == "" ) {
+    isDataSent.value = true;
+    reply = "ERROR : 请填写信息～"
     return
   }
+  isDataSent.value = false;
+  requestSending.value = !requestSending.value
   // do not check the session is valid.
-  console.log(JSON.stringify(formInline))
   const resp = await fetch('https://api.impart.icu/api/',{method:'post',body:JSON.stringify(formInline)})
   if (resp.ok) {
     const data : replyFormat = await resp.json()
     hash = data.token;
     isDataSent.value = true;
+    requestSending.value = !requestSending.value
+    reply = "请在 Lucy 端输入 :   /pgr bind " + hash
+  } else {
+    isDataSent.value = true;
+    requestSending.value = !requestSending.value
+    reply = "出现不可预料的错误 awa : " + resp.statusText
   }
 }
 
 let hash:string;
+let reply:string;
 
 const isDataSent = ref(false)
+const requestSending = ref(false)
 
 function linkToBook() {
   window.location.href = "https://moe.himoyo.cn/archives/14/"
@@ -70,8 +81,14 @@ function linkToIntro() {
       <button @click="onSubmit">提交</button>
     </div>
     <br>
+    <div class="request-handler" v-if="requestSending">
+    <div class="sakura-loader">
+    <div class="sakura"></div>
+    </div>
+      Loading...
+    </div>
     <div class="result" v-if="isDataSent">
-    请在 Lucy 端输入 :  /pgr bind {{ hash }}
+    {{ reply }}
     </div>
   </div>
 </div>
@@ -84,7 +101,7 @@ html,body {
   height: 100%;
   background: linear-gradient(-45deg, #ffffff 25%, #87cefa 25%, #87cefa 50%, #ffffff 50%, #ffffff 75%, #87cefa 75%);
   background-size: 40px 40px;
-    font-family: "Noto Sans", sans-serif;
+  font-family: "Ubuntu","Noto Serif","Noto Serif CJK SC","serif";
   .inline-block {
     height: 125px;
     width: 100%;
@@ -138,8 +155,7 @@ html,body {
     }
     .result{
       top: 10px;
-      font-size: 14px;
-      font-family: "Noto Sans",sans-serif;
+      font-size: 16px;
       padding-left: 5%;
       padding-right: 5%;
       padding-bottom: 5%;
@@ -156,6 +172,10 @@ html,body {
         border: 0 #66afe9;
         font-family: "Microsoft soft",serif;
       }
+    }
+    .request-handler {
+      position: relative;
+      left: 40px;
     }
   }
 }
@@ -194,6 +214,50 @@ button {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+}
+
+.sakura-loader {
+  bottom: 40px;
+  right: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: auto;
+  height: auto;
+  animation: rotate 2s linear infinite;
+}
+
+.sakura {
+  position: absolute;
+  width: 48px;
+  height: 38px;
+  background-image: url('https://cdn.himoyo.cn/uploads/cropped-site-logo-1-192x192.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: fadeInOut 1s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 </style>
