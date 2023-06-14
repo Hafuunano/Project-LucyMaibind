@@ -82,9 +82,6 @@ function linkToIntro() {
     </div>
     <br>
     <div class="request-handler" v-if="requestSending">
-    <div class="sakura-loader">
-    <div class="sakura"></div>
-    </div>
       Loading...
     </div>
     <div class="result" v-if="isDataSent">
@@ -214,29 +211,6 @@ button {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
-}
-
-.sakura-loader {
-  bottom: 40px;
-  right: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: auto;
-  height: auto;
-  animation: rotate 2s linear infinite;
-}
-
-.sakura {
-  position: absolute;
-  width: 48px;
-  height: 38px;
-  background-image: url('https://cdn.himoyo.cn/uploads/cropped-site-logo-1-192x192.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0;
-  animation: fadeInOut 1s linear infinite;
 }
 
 @keyframes rotate {
