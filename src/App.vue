@@ -45,8 +45,10 @@ function linkToIntro() {
 <template>
   <div class="inline-block">
     <div class="cat"> Meow? OwQ</div>
+    <div class="icon-type">
     <font-awesome-icon icon="cat" class="type" @click="linkToBook" />
-    <font-awesome-icon icon="book" class="type2" @click="linkToIntro" />
+    <font-awesome-icon icon="book" class="type" @click="linkToIntro" />
+    </div>
     </div>
 <div class="container">
   <div class="format">
@@ -77,7 +79,7 @@ function linkToIntro() {
 
 <style lang="scss">
 
-  html,body {
+html,body {
   width: 100%;
   height: 100%;
   background: linear-gradient(-45deg, #ffffff 25%, #87cefa 25%, #87cefa 50%, #ffffff 50%, #ffffff 75%, #87cefa 75%);
@@ -95,26 +97,20 @@ function linkToIntro() {
       top: 30%;
       left: 3%;
       font-size: 30px;
-
       color: white;
     }
-  .type {
-      position: absolute;
+    .icon-type {
+      height: auto;
       color: white;
-      top: 15%;
-      right: 100px;
       float: right;
-      width: 10%;
-      height: 25%;
-    }
-    .type2 {
-      position: absolute;
-      color: white;
-      top: 15%;
-      right: 150px;
-      float: right;
-      width: 10%;
-      height: 25%;
+      width: 100px;
+      white-space: nowrap;
+      .type {
+        position: relative;
+        height: 35px;
+        right: 35px;
+        margin-right: 10px;
+      }
     }
   }
 .container {
@@ -165,7 +161,6 @@ function linkToIntro() {
 }
 }
 
-
 a {
   text-decoration: none;
 }
@@ -187,6 +182,7 @@ h1 {
   text-align: center;
   font-family: "Noto Sans",serif;
 }
+
 button {
   display: inline-block;
   padding: 10px 20px;
