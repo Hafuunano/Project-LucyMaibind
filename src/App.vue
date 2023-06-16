@@ -28,7 +28,7 @@ async function onSubmit () {
     hash = data.token;
     isDataSent.value = true;
     requestSending.value = !requestSending.value
-    reply = "请在 Lucy 端输入 :   /pgr bind " + hash
+    reply = "请在 Lucy 端输入 :   !pgr bind " + hash
   } else {
     isDataSent.value = true;
     requestSending.value = !requestSending.value
