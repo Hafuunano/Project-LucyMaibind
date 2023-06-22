@@ -69,7 +69,7 @@ function linkToIntro() {
       <br>使用此绑定页面可以将 Session 进行加密，通过此加密页面可以不通过直接发送原Session的的情况下传入Lucy.
       <br>
       <br>在这边填入你的相关信息，将账户进行绑定，绑定后将会返回一串校验码,请使用校验码进行绑定<br>
-      <br>Android 端查询 Session App : <a href="https://cdn.himoyo.cn/uploads/%E8%8E%B7%E5%8F%96Token_1.0.apk">Token (By MiViQ)</a>
+      <br>关于获取Session的方法<a href="https://moe.himoyo.cn/archives/113/">Phigros Session 获取方法</a>
     </div>
     <div class="form-path">
       <form>
