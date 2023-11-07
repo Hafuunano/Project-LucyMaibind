@@ -49,15 +49,16 @@ async function onTempSubmit () {
   }
   isDataSentTemp.value = false;
   requestSendingTemp.value = !requestSendingTemp.value
-  const resp = await fetch('https://maihook.lemonkoi.one/api/hook?id='+tempid,{method:'get'})
-  if (resp.ok) {
-    const content = await resp.text();
+  const respData = await fetch('https://maihook.lemonkoi.one/api/hook?id='+tempid,{method:'get'})
+  let ContentTemp;
+  if (respData.ok) {
+    ContentTemp = await respData.text();
     requestSendingTemp.value = !requestSendingTemp.value
-    replyTemp = content
+    replyTemp = ContentTemp
   } else {
-    const content = await resp.text();
+    ContentTemp = await respData.text();
     requestSendingTemp.value = !requestSendingTemp.value
-    replyTemp = "ERR: " + content
+    replyTemp = "ERR: " + ContentTemp
   }
 }
 
