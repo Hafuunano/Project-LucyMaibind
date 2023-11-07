@@ -116,7 +116,7 @@ function linkToIntro() {
     </div>
     <div class="index">
       <div class="temp-box">
-      <br>此处为快速绑定页面<br>
+      <br>此处为快速解锁页面<br>
       </div>
       <form class="form-path">
        MaiID :    <input v-model="tempUploader.session" placeholder="Please Type Your id" class="inputbox-temp" required />
