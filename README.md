@@ -1,5 +1,6 @@
-## Lucy 的 Phigros 绑定页面
+## Lucy 的 maimai userid 查询 绑定 页面
 
-荒废了多少年写的破设计，可以看看x
+**通过输入您的 UserID 和 mai 时间段身份识别码**
 
-site: [pgr.impart.icu](https://pgr.impart.icu)
+**获得 您的 maimaiid 并通过加密手段将 身份 传入到 Lucy
+以达到一些目的**

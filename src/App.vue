@@ -28,7 +28,7 @@ async function onSubmit () {
     hash = data.token;
     isDataSent.value = true;
     requestSending.value = !requestSending.value
-    reply = "请在 Lucy 端输入 :   !pgr bind " + hash
+    reply = "请在 Lucy 端输入 :   !mai bind " + hash
   } else {
     isDataSent.value = true;
     requestSending.value = !requestSending.value
@@ -43,7 +43,7 @@ const isDataSent = ref(false)
 const requestSending = ref(false)
 
 function linkToBook() {
-  window.location.href = "https://moe.himoyo.cn/archives/14/"
+  window.location.href = "https://lemonkoi.one/archives/14/"
 }
 
 function linkToIntro() {
@@ -63,17 +63,16 @@ function linkToIntro() {
     </div>
 <div class="container">
   <div class="format">
-    <h1>关于 Phigros B19 Session 绑定</h1>
+    <h1>关于 maimai Userid 绑定</h1>
     <div class="index">
-        <br>Session 是一种Phigros同步存档的身份码，使用此码同时可以拿到账户存档的控制权。<br>
-      <br>使用此绑定页面可以将 Session 进行加密，通过此加密页面可以不通过直接发送原Session的的情况下传入Lucy.
-      <br>
-      <br>在这边填入你的相关信息，将账户进行绑定，绑定后将会返回一串校验码,请使用校验码进行绑定<br>
-      <br>关于获取Session的方法 ：<a href="https://moe.himoyo.cn/archives/113/">Phigros Session 获取方法</a>
+        <br>众所周知的一些原因，MaiID 需要进行处理加密<br>
+      <br>使用此绑定页面可以将 MaiID 进行加密，通过此加密页面可以不通过直接发送原MAIID的的情况下传入Lucy.<br>
+      <br>此处的 MaiID 是 在华立下拿到的 二维码 识别后 得到的以 SGWCMAID 开头的 字符串.<br>
+
     </div>
     <div class="form-path">
       <form>
-     Session:    <input v-model="formInline.session" placeholder="Please Type Your Session" class="inputbox" required />
+     maiid:    <input v-model="formInline.session" placeholder="Please Type Your maiid" class="inputbox" required />
         <br><br>
       QQ:   <input v-model="formInline.qq" placeholder="Please Type Your QQ" class="inputbox" required type="text" />
         <br><br>
