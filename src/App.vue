@@ -52,10 +52,12 @@ async function onTempSubmit () {
   const resp = await fetch('https://maihook.lemonkoi.one/api/hook?id='+tempid,{method:'get'})
   if (resp.ok) {
     const content = await resp.text();
+    console.log(resp.text())
     requestSendingTemp.value = !requestSendingTemp.value
     reply = content
   } else {
-    const content = await  resp.text();
+    const content = await resp.text();
+    console.log(resp.text())
     requestSendingTemp.value = !requestSendingTemp.value
     reply = "ERR: " + content
   }
