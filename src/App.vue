@@ -6,6 +6,10 @@ const formInline = reactive({
   session: '',
 })
 
+const tempUploader = reactive({
+  session:'',
+})
+
 interface replyFormat {
   token: string;
   expire: string;
@@ -36,11 +40,36 @@ async function onSubmit () {
   }
 }
 
+async function onTempSubmit () {
+  const tempid = tempUploader.session
+  if ( tempid == "" ) {
+    isDataSentTemp.value = true;
+    reply = "ERROR : 请填写信息～"
+    return
+  }
+  isDataSentTemp.value = false;
+  requestSendingTemp.value = !requestSendingTemp.value
+  const resp = await fetch('https://maihook.lemonkoi.one/api/hook?id='+tempid,{method:'get'})
+  if (resp.ok) {
+    const content = await resp.text();
+    requestSendingTemp.value = !requestSendingTemp.value
+    reply = content
+  } else {
+    const content = await  resp.text();
+    requestSendingTemp.value = !requestSendingTemp.value
+    reply = "ERR: " + content
+  }
+}
+
+
 let hash:string;
 let reply:string;
 
 const isDataSent = ref(false)
 const requestSending = ref(false)
+
+const isDataSentTemp = ref(false)
+const requestSendingTemp = ref(false)
 
 function linkToBook() {
   window.location.href = "https://lemonkoi.one/archives/14/"
@@ -63,12 +92,11 @@ function linkToIntro() {
     </div>
 <div class="container">
   <div class="format">
-    <h1>关于 maimai Userid 绑定</h1>
+    <h1>关于 maimai UserID 绑定</h1>
     <div class="index">
-        <br>众所周知的一些原因，MaiID 需要进行处理加密<br>
       <br>使用此绑定页面可以将 MaiID 进行加密，通过此加密页面可以不通过直接发送原MAIID的的情况下传入Lucy.<br>
       <br>此处的 MaiID 是 在华立下拿到的 二维码 识别后 得到的以 SGWCMAID 开头的 字符串.<br>
-
+      <br>如果你的群组没有 Lucy Bot 存在，可以使用一次性的快速解锁，需要使用华立生成的二维码内容.<br>
     </div>
     <div class="form-path">
       <form>
@@ -85,6 +113,23 @@ function linkToIntro() {
     </div>
     <div class="result" v-if="isDataSent">
     {{ reply }}
+    </div>
+    <div class="index">
+      <div class="temp-box">
+      <br>此处为快速绑定页面<br>
+      </div>
+      <form class="form-path">
+       MaiID :    <input v-model="tempUploader.session" placeholder="Please Type Your id" class="inputbox-temp" required />
+        <br><br>
+      </form>
+      <button @click="onTempSubmit">提交</button>
+    </div>
+    <br>
+    <div class="request-handler" v-if="requestSendingTemp">
+      Loading...
+    </div>
+    <div class="result" v-if="isDataSentTemp">
+      {{ reply }}
     </div>
   </div>
 </div>
