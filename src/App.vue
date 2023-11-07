@@ -52,20 +52,19 @@ async function onTempSubmit () {
   const resp = await fetch('https://maihook.lemonkoi.one/api/hook?id='+tempid,{method:'get'})
   if (resp.ok) {
     const content = await resp.text();
-    console.log(resp.text())
     requestSendingTemp.value = !requestSendingTemp.value
-    reply = content
+    replyTemp = content
   } else {
     const content = await resp.text();
-    console.log(resp.text())
     requestSendingTemp.value = !requestSendingTemp.value
-    reply = "ERR: " + content
+    replyTemp = "ERR: " + content
   }
 }
 
 
 let hash:string;
 let reply:string;
+let replyTemp:string;
 
 const isDataSent = ref(false)
 const requestSending = ref(false)
@@ -131,7 +130,7 @@ function linkToIntro() {
       Loading...
     </div>
     <div class="result" v-if="isDataSentTemp">
-      {{ reply }}
+      {{ replyTemp }}
     </div>
   </div>
 </div>
