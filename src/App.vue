@@ -54,10 +54,12 @@ async function onTempSubmit () {
   if (respData.ok) {
     ContentTemp = await respData.text();
     requestSendingTemp.value = !requestSendingTemp.value
+    isDataSentTemp.value = !isDataSentTemp.value
     replyTemp = ContentTemp
   } else {
     ContentTemp = await respData.text();
     requestSendingTemp.value = !requestSendingTemp.value
+    isDataSentTemp.value = !isDataSentTemp.value
     replyTemp = "ERR: " + ContentTemp
   }
 }
