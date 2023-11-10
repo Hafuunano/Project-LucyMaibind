@@ -144,8 +144,6 @@ function linkToIntro() {
 html,body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
-  max-width: 100%;
   background: repeating-linear-gradient(45deg, #5bcefa, #5bcefa 10px, #f5a9b8 10px, #f5a9b8 20px, #fff 20px, #fff 30px);
   font-family: "Noto Sans CJK SC","serif";
   a {
