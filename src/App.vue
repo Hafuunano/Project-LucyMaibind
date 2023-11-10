@@ -88,7 +88,7 @@ function linkToIntro() {
 
 <template>
   <div class="inline-block">
-    <div class="cat"> Meow? OwQ</div>
+    <div class="cat"> Meow? OwQ ^^</div>
     <div class="icon-type">
     <font-awesome-icon icon="cat" class="type" @click="linkToBook" />
     <font-awesome-icon icon="book" class="type" @click="linkToIntro" />
@@ -104,9 +104,9 @@ function linkToIntro() {
     </div>
     <div class="form-path">
       <form>
-     maiid:    <input v-model="formInline.session" placeholder="Please Type Your maiid" class="inputbox" required />
+     maiID: <input v-model="formInline.session" placeholder="Please Type Your maiid" class="inputbox" required />
         <br><br>
-      QQ:   <input v-model="formInline.qq" placeholder="Please Type Your QQ" class="inputbox" required type="text" />
+      QQ: <input v-model="formInline.qq" placeholder="Please Type Your QQ" class="inputbox" required type="text" />
         <br><br>
       </form>
       <button @click="onSubmit">提交</button>
@@ -120,10 +120,10 @@ function linkToIntro() {
     </div>
     <div class="index">
       <div class="temp-box">
-      <br>此处为快速解锁页面<br>
+      <h1>此处为快速解锁页面</h1>
       </div>
-      <form class="form-path">
-       MaiID :    <input v-model="tempUploader.session" placeholder="Please Type Your id" class="inputbox-temp" required />
+      <form class="form-path-temp">
+        MaiID : <input v-model="tempUploader.session" placeholder="Please Type Your id" class="inputbox-temp" required />
         <br><br>
       </form>
       <button @click="onTempSubmit">提交</button>
@@ -144,9 +144,33 @@ function linkToIntro() {
 html,body {
   width: 100%;
   height: 100%;
-  background: linear-gradient(-45deg, #ffffff 25%, #87cefa 25%, #87cefa 50%, #ffffff 50%, #ffffff 75%, #87cefa 75%);
-  background-size: 40px 40px;
-  font-family: "Ubuntu","Noto Serif","Noto Serif CJK SC","serif";
+  overflow-x: hidden;
+  max-width: 100%;
+  background: repeating-linear-gradient(45deg, #5bcefa, #5bcefa 10px, #f5a9b8 10px, #f5a9b8 20px, #fff 20px, #fff 30px);
+  font-family: "Noto Sans CJK SC","serif";
+  a {
+    text-decoration: none;
+  }
+
+
+  h1 {
+    font-size: 18px;
+    text-align: center;
+    font-family: "Noto Sans CJK SC",serif;
+  }
+
+  button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #409eff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
   .inline-block {
     height: 125px;
     width: 100%;
@@ -193,7 +217,7 @@ html,body {
     padding-bottom: 5%;
     .index {
       top: 10px;
-      font-family: "Noto Sans",sans-serif;
+      font-family: "Noto Sans CJK SC",sans-serif;
       font-size: 16px;
       padding-left: 5%;
       padding-right: 5%;
@@ -206,6 +230,18 @@ html,body {
       padding-bottom: 5%;
       word-break: break-all;
     }
+    .form-path-temp {
+      width: auto;
+      height: auto;
+      position: relative;
+      margin-left: 0;
+      margin-top: 5%;
+      input {
+        outline-style: none ;
+        border: 0 #66afe9;
+        font-family: "Noto Sans CJK SC",serif;
+      }
+    }
     .form-path {
       width: auto;
       height: auto;
@@ -215,7 +251,7 @@ html,body {
       input {
         outline-style: none ;
         border: 0 #66afe9;
-        font-family: "Microsoft soft",serif;
+        font-family: "Noto Sans CJK SC",serif;
       }
     }
     .request-handler {
@@ -226,60 +262,6 @@ html,body {
 }
 }
 
-a {
-  text-decoration: none;
-}
 
-a:hover {
-  color: rgb(109, 240, 240);
-}
-
-a:active {
-  color: rgb(208, 255, 0);
-}
-
-a:visited {
-  color: purple;
-}
-
-h1 {
-  font-size: 18px;
-  text-align: center;
-  font-family: "Noto Sans",serif;
-}
-
-button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #409eff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
 
 </style>
