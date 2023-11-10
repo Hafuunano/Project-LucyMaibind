@@ -88,7 +88,7 @@ function linkToIntro() {
 
 <template>
   <div class="inline-block">
-    <div class="cat"> Meow? OwQ ^^</div>
+    <div class="cat"> Meow? OwQ </div>
     <div class="icon-type">
     <font-awesome-icon icon="cat" class="type" @click="linkToBook" />
     <font-awesome-icon icon="book" class="type" @click="linkToIntro" />
@@ -149,8 +149,6 @@ html,body {
   a {
     text-decoration: none;
   }
-
-
   h1 {
     font-size: 18px;
     text-align: center;
@@ -177,22 +175,22 @@ html,body {
     position: relative;
     background: #87cefa;
     .cat {
-      position: relative;
+      position: absolute;
       top: 30%;
       left: 3%;
       font-size: 30px;
       color: white;
     }
     .icon-type {
-      height: auto;
+      position: relative;
       color: white;
       float: right;
-      width: 100px;
+      top: 35%;
       white-space: nowrap;
       .type {
         position: relative;
-        height: 35px;
-        right: 35px;
+        height: 2rem;
+        right: 2rem;
         margin-right: 10px;
       }
     }
