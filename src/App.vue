@@ -1,5 +1,6 @@
 <script lang="ts" setup xmlns="http://www.w3.org/1999/html">
 import {reactive, ref} from 'vue'
+import { inject } from '@vercel/analytics';
 
 
 
@@ -53,6 +54,7 @@ async function onTempSubmit () {
   requestSendingTemp.value = !requestSendingTemp.value
   const respData = await fetch('https://maihook.lemonkoi.one/api/hook?id='+tempid,{method:'get'})
   let ContentTemp;
+  inject();
   if (respData.ok) {
     ContentTemp = await respData.text();
     requestSendingTemp.value = !requestSendingTemp.value
