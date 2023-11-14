@@ -1,5 +1,7 @@
 <script lang="ts" setup xmlns="http://www.w3.org/1999/html">
 import {reactive, ref} from 'vue'
+import Analytics from '@vercel/analytics'
+
 
 const formInline = reactive({
   qq: '',
@@ -36,7 +38,7 @@ async function onSubmit () {
   } else {
     isDataSent.value = true;
     requestSending.value = !requestSending.value
-    reply = "出现不可预料的错误 awa : " + resp.statusText
+    reply = "出现不可预料的错误~ : " + resp.statusText
   }
 }
 
@@ -135,6 +137,7 @@ function linkToIntro() {
     <div class="result" v-if="isDataSentTemp">
       {{ replyTemp }}
     </div>
+    <Analytics />
   </div>
 </div>
 </template>
