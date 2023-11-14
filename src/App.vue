@@ -1,6 +1,6 @@
 <script lang="ts" setup xmlns="http://www.w3.org/1999/html">
 import {reactive, ref} from 'vue'
-import Analytics from '@vercel/analytics'
+
 
 
 const formInline = reactive({
@@ -137,7 +137,6 @@ function linkToIntro() {
     <div class="result" v-if="isDataSentTemp">
       {{ replyTemp }}
     </div>
-    <Analytics />
   </div>
 </div>
 </template>
