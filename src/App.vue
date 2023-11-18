@@ -105,6 +105,9 @@ function linkToIntro() {
       <br>使用此绑定页面可以将 MaiID 进行加密，通过此加密页面可以不通过直接发送原MAIID的的情况下传入Lucy.<br>
       <br>此处的 MaiID 是 在华立下拿到的 二维码 识别后 得到的以 SGWCMAID 开头的 字符串.<br>
       <br>如果你的群组没有 Lucy Bot 存在，可以使用一次性的快速解锁，需要使用华立生成的二维码内容.<br>
+      <br> * 此网站使用 Vercel Web Analytics 对用户采集来源 (使用 UA, 访问地区)，仅用作于滥用判断统计<br>
+      <br>* (仅当使用临时解锁功能时才会被采集信息，且数据对开发者匿名). <br>
+      <br> * 开源地址 : <a href="https://github.com/MoYoez/mai-bind_LucyBot"> Click Here</a>. (Hook 部分不开源) <br>
     </div>
     <div class="form-path">
       <form>
