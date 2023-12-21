@@ -155,8 +155,8 @@ function linkToIntro() {
     <div class="index">
       <div class="temp-box">
       <h1>此处为快速解锁页面</h1>
-      <br>* 使用生成快速链接可以直接点击使用，无需跳转到此页面<br>
-      <br style="color:red">* 此link包含您的userid，请勿泄露<br>
+      <br>* 使用生成快速链接可以直接点击使用，无需跳转到此页面<br><br>
+      <span style="color:red">* 此link包含您的userid，请勿泄露</span>
       </div>
       <form class="form-path-temp">
         MaiID : <input v-model="tempUploader.session" placeholder="Please Type Your id" class="inputbox-temp" required />
