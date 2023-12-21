@@ -85,7 +85,7 @@ async function generator () {
     ContentTemp = await respData.text();
     requestSendingTemp.value = !requestSendingTemp.value
     isDataSentTemp.value = !isDataSentTemp.value
-    replyTemp = "可保存于书签，便于下次快速使用\n此link包含您的userid，请勿泄露\n"+ContentTemp
+    replyTemp = ContentTemp
   } else {
     ContentTemp = await respData.text();
     requestSendingTemp.value = !requestSendingTemp.value
@@ -155,6 +155,8 @@ function linkToIntro() {
     <div class="index">
       <div class="temp-box">
       <h1>此处为快速解锁页面</h1>
+      <br>* 使用生成快速链接可以直接点击使用，无需跳转到此页面<br>
+      <br style="color:red">此link包含您的userid，请勿泄露<br>
       </div>
       <form class="form-path-temp">
         MaiID : <input v-model="tempUploader.session" placeholder="Please Type Your id" class="inputbox-temp" required />
