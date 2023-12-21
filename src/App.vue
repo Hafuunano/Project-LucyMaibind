@@ -54,7 +54,7 @@ async function onTempSubmit () {
   requestSendingTemp.value = !requestSendingTemp.value
   const respData = await fetch('https://maihook.lemonkoi.one/api/hook?id='+tempid,{method:'get'})
   let ContentTemp;
-  inject();
+ // inject();
   if (respData.ok) {
     ContentTemp = await respData.text();
     requestSendingTemp.value = !requestSendingTemp.value
@@ -68,6 +68,32 @@ async function onTempSubmit () {
   }
 }
 
+
+async function generator () {
+  const tempid = tempUploader.session
+  if ( tempid == "" ) {
+    isDataSentTemp.value = true;
+    reply = "ERROR : 请填写信息～"
+    return
+  }
+  isDataSentTemp.value = false;
+  requestSendingTemp.value = !requestSendingTemp.value
+  const respData = await fetch('https://maihook.lemonkoi.one/api/generator?id='+tempid,{method:'get'})
+  let ContentTemp;
+ // inject();
+  if (respData.ok) {
+    ContentTemp = await respData.text();
+    requestSendingTemp.value = !requestSendingTemp.value
+    isDataSentTemp.value = !isDataSentTemp.value
+    replyTemp = "可保存于书签，便于下次快速使用\n此link包含您的userid，请勿泄露\n"+ContentTemp
+  } else {
+    ContentTemp = await respData.text();
+    requestSendingTemp.value = !requestSendingTemp.value
+    isDataSentTemp.value = !isDataSentTemp.value
+    replyTemp = "ERR: " + ContentTemp
+  }
+
+}
 
 let hash:string;
 let reply:string;
@@ -134,7 +160,8 @@ function linkToIntro() {
         MaiID : <input v-model="tempUploader.session" placeholder="Please Type Your id" class="inputbox-temp" required />
         <br><br>
       </form>
-      <button @click="onTempSubmit">提交</button>
+      <button @click="onTempSubmit">提交</button><br>
+      <br><button @click="generator">生成快速链接</button>
     </div>
     <br>
     <div class="request-handler" v-if="requestSendingTemp">
