@@ -54,7 +54,7 @@ async function onTempSubmit () {
   requestSendingTemp.value = !requestSendingTemp.value
   const respData = await fetch('https://maihook.lemonkoi.one/api/hook?id='+tempid,{method:'get'})
   let ContentTemp;
- // inject();
+  inject();
   if (respData.ok) {
     ContentTemp = await respData.text();
     requestSendingTemp.value = !requestSendingTemp.value
@@ -80,7 +80,7 @@ async function generator () {
   requestSendingTemp.value = !requestSendingTemp.value
   const respData = await fetch('https://maihook.lemonkoi.one/api/generator?id='+tempid,{method:'get'})
   let ContentTemp;
- // inject();
+  inject();
   if (respData.ok) {
     ContentTemp = await respData.text();
     requestSendingTemp.value = !requestSendingTemp.value
