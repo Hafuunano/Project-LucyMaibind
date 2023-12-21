@@ -29,7 +29,7 @@ async function onSubmit () {
   isDataSent.value = false;
   requestSending.value = !requestSending.value
   // do not check the session is valid.
-  const resp = await fetch('https://sample.lemonkoi.one//api/',{method:'post',body:JSON.stringify(formInline)})
+  const resp = await fetch('https://sample.lemonkoi.one/api/',{method:'post',body:JSON.stringify(formInline)})
   if (resp.ok) {
     const data : replyFormat = await resp.json()
     hash = data.token;
