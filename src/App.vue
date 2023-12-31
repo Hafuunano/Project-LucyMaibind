@@ -134,7 +134,7 @@ function linkToIntro() {
       <br> * 此网站使用 Vercel Web Analytics 对用户采集来源 (使用 UA, 访问地区)，仅用作于滥用判断统计<br>
       <br>* (仅当使用临时解锁功能时才会被采集信息，且数据对开发者匿名). <br>
       <br> * 开源地址 : <a href="https://github.com/MoYoez/mai-bind_LucyBot"> Click Here</a>. (Hook 部分不开源) <br>
-      <br> * 好用请给项目点个 Star 谢谢喵，这两天访问量爆 1K 了, 统计部分已经不记录了 （  <br>
+      <br> * ip 段 目前查证使用太多被 华立 封锁，网页临时解封故障 ，请使用 TelegramBot @Lucy_HiMoYoBot || Q端 Lucy 谢谢喵
       <br>Visited: <img src="https://visitor-badge.laobi.icu/badge?page_id=Lucy_maibindsite"><br>
       
     </div>
