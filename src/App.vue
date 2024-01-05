@@ -128,13 +128,13 @@ function linkToIntro() {
   <div class="format">
     <h1>关于 maimai UserID 绑定</h1>
     <div class="index">
-      <br>使用此绑定页面可以将 MaiID 进行加密，通过此加密页面可以不通过直接发送原MAIID的的情况下传入Lucy.<br>
+      <br>使用此绑定页面可以将 MaiID 进行加密，通过此加密页面可以不通过直接发送原MAIID的的情况下传入Lucy (仅限 QQ 端).<br>
       <br>此处的 MaiID 是 在华立下拿到的 二维码 识别后 得到的以 SGWCMAID 开头的 字符串.<br>
       <br>如果你的群组没有 Lucy Bot 存在，可以使用一次性的快速解锁，需要使用华立生成的二维码内容.<br>
       <br> * 此网站使用 Vercel Web Analytics 对用户采集来源 (使用 UA, 访问地区)，仅用作于滥用判断统计<br>
       <br>* (仅当使用临时解锁功能时才会被采集信息，且数据对开发者匿名). <br>
       <br> * 开源地址 : <a href="https://github.com/MoYoez/mai-bind_LucyBot"> Click Here</a>. (Hook 部分不开源) <br>
-      <br> * ip 段 目前查证使用太多被 华立 封锁，网页临时解封故障 ，请使用 TelegramBot @Lucy_HiMoYoBot || Q端 Lucy 谢谢喵
+      <br> * 尝试修复了一下，或许网页版本还是可以用的 ，建议转向使用 TelegramBot @Lucy_HiMoYoBot || Q端 Lucy 谢谢喵<br>
       <br>Visited: <img src="https://visitor-badge.laobi.icu/badge?page_id=Lucy_maibindsite"><br>
       
     </div>
