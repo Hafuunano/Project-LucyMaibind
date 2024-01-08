@@ -158,6 +158,7 @@ function linkToIntro() {
       <div class="temp-box">
       <h1>此处为快速解锁页面</h1>
       <br>* 使用生成快速链接可以直接点击使用，无需跳转到此页面<br><br>
+        <br>* 如果无法使用请先 清理缓存 + 访问 <a href="https://ptv4.lemonkoi.one:23333/">here</a> 同意证书错误 <br>
       <span style="color:red">* 此link包含您的userid，请勿泄露</span>
       </div>
       <form class="form-path-temp">
