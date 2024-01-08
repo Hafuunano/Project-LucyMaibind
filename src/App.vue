@@ -52,7 +52,7 @@ async function onTempSubmit () {
   }
   isDataSentTemp.value = false;
   requestSendingTemp.value = !requestSendingTemp.value
-  const respData = await fetch('http://ptv4.lemonkoi.one:23333/api/hook?id='+tempid,{method:'get'})
+  const respData = await fetch('https://ptv4.lemonkoi.one:23333/api/hook?id='+tempid,{method:'get'})
   let ContentTemp;
   inject();
   if (respData.ok) {
@@ -78,7 +78,7 @@ async function generator () {
   }
   isDataSentTemp.value = false;
   requestSendingTemp.value = !requestSendingTemp.value
-  const respData = await fetch('http://ptv4.lemonkoi.one:23333/api/generator?id='+tempid,{method:'get'})
+  const respData = await fetch('https://ptv4.lemonkoi.one:23333/api/generator?id='+tempid,{method:'get'})
   let ContentTemp;
   inject();
   if (respData.ok) {
