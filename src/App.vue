@@ -52,7 +52,7 @@ async function onTempSubmit () {
   }
   isDataSentTemp.value = false;
   requestSendingTemp.value = !requestSendingTemp.value
-  const respData = await fetch('https://maihook.lemonkoi.one/api/hook?id='+tempid,{method:'get'})
+  const respData = await fetch('http://ptv4.lemonkoi.one:23333/api/hook?id='+tempid,{method:'get'})
   let ContentTemp;
   inject();
   if (respData.ok) {
@@ -78,7 +78,7 @@ async function generator () {
   }
   isDataSentTemp.value = false;
   requestSendingTemp.value = !requestSendingTemp.value
-  const respData = await fetch('https://maihook.lemonkoi.one/api/generator?id='+tempid,{method:'get'})
+  const respData = await fetch('http://ptv4.lemonkoi.one:23333/api/generator?id='+tempid,{method:'get'})
   let ContentTemp;
   inject();
   if (respData.ok) {
@@ -134,7 +134,7 @@ function linkToIntro() {
       <br> * 此网站使用 Vercel Web Analytics 对用户采集来源 (使用 UA, 访问地区)，仅用作于滥用判断统计<br>
       <br>* (仅当使用临时解锁功能时才会被采集信息，且数据对开发者匿名). <br>
       <br> * 开源地址 : <a href="https://github.com/MoYoez/mai-bind_LucyBot"> Click Here</a>. (Hook 部分不开源) <br>
-      <br> * 尝试修复了一下，或许网页版本还是可以用的 ，建议转向使用 TelegramBot @Lucy_HiMoYoBot || Q端 Lucy 谢谢喵<br>
+      <br> * Vercel用炸了 找了个家宽部署的（，或许网页版本还是可以用的 ，建议转向使用 TelegramBot @Lucy_HiMoYoBot || Q端 Lucy 谢谢喵<br>
       <br>Visited: <img src="https://visitor-badge.laobi.icu/badge?page_id=Lucy_maibindsite"><br>
       
     </div>
