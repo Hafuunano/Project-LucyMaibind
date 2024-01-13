@@ -134,7 +134,8 @@ function linkToIntro() {
       <br> * 此网站使用 Vercel Web Analytics 对用户采集来源 (使用 UA, 访问地区)，仅用作于滥用判断统计<br>
       <br>* (仅当使用临时解锁功能时才会被采集信息，且数据对开发者匿名). <br>
       <br> * 开源地址 : <a href="https://github.com/MoYoez/mai-bind_LucyBot"> Click Here</a>. (Hook 部分不开源) <br>
-      <br> * Web端修完了 （确信）  | TelegramBot @Lucy_HiMoYoBot || Q端 Lucy 谢谢喵<br>
+      <br> * TelegramBot @Lucy_HiMoYoBot || Q端 Lucy 谢谢喵<br>
+      <br> * MaimaiDXCN Status :<a href="https://arctanmai.mbrjun.cn/"> Here</a> 请根据 uptime 判断服务器可靠性 <br>
       <br>Visited: <img src="https://visitor-badge.laobi.icu/badge?page_id=Lucy_maibindsite"><br>
       
     </div>
