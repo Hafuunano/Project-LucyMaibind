@@ -1,7 +1,7 @@
 <script lang="ts" setup xmlns="http://www.w3.org/1999/html">
-import {reactive, ref} from 'vue'
+import { onMounted, reactive, ref} from 'vue';
+import type {ZlibStatus,ServerStatus} from './received';
 import { inject } from '@vercel/analytics';
-
 
 
 const formInline = reactive({
@@ -68,7 +68,6 @@ async function onTempSubmit () {
   }
 }
 
-
 async function generator () {
   const tempid = tempUploader.session
   if ( tempid == "" ) {
@@ -98,9 +97,11 @@ async function generator () {
 let hash:string;
 let reply:string;
 let replyTemp:string;
+let serverStatus = "Loading..."
 
 const isDataSent = ref(false)
 const requestSending = ref(false)
+const FinishedRequest = ref(false)
 
 const isDataSentTemp = ref(false)
 const requestSendingTemp = ref(false)
@@ -113,6 +114,47 @@ function linkToIntro() {
   window.location.href = "https://lucy.lemonkoi.one"
 }
 
+// export UserMaimai Webstatus.
+
+function ConvertZlib(value:number,total:number) {
+  if (total === 0) {
+    return "0.000%";
+  }
+
+  const percentage: number = (value / total) * 100;
+  return `${percentage.toFixed(3)}%`;
+}
+
+function ConvertFloat(percentage:number) {
+  return `${percentage.toFixed(3)}%`;
+}
+
+async function status() {
+  let fullText:string
+  const getZlibData = await fetch("https://maihook.lemonkoi.one/api/zlib")
+  const getWebData = await fetch("https://maihook.lemonkoi.one/api/ping")
+if (getZlibData.ok && getWebData.ok) {
+  const preparedWebData:ServerStatus = await getWebData.json()
+  const preparedZlibData:ZlibStatus = await getZlibData.json()
+  let getLucyResponse:number
+  if (preparedZlibData.full["60"] <180) {
+    getLucyResponse = preparedZlibData.full["60"]
+  } else {
+    getLucyResponse = preparedZlibData.full["60"] - 180
+  }
+  const headerText = "* Zlib 压缩跳过率可以很好的反馈当前 MaiNet (Wahlap Service) 当前负载的情况\n* Web Uptime Ping 则可以反馈 MaiNet 在外部原因(DDOS) 下造成的负载详情 ( 100% 即代表服务器为稳定, uptime 越低则代表可用性越差 ) \n* 在 1小时 内，Lucy 共处理了" + getLucyResponse+"次 请求💫，其中详细数据如下:\n\n"
+  const shownZlibText = "Zlib 压缩跳过率: " + "10mins (" + ConvertZlib(preparedZlibData.zlib_Error["10"],preparedZlibData.full["10"]) + "Loss)\n"+ "30mins (" + ConvertZlib(preparedZlibData.zlib_Error["30"],preparedZlibData.full["30"]) + "Loss)\n" + "60mins (" + ConvertZlib(preparedZlibData.zlib_Error["60"],preparedZlibData.full["60"]) + "Loss)\n"
+  const WebStatusText = "Web Uptime Ping:\n * MaimaiDXCN: " +ConvertFloat(preparedWebData.details["maimai DX CN"].uptime*100) + "%\n * MaimaiDXCN Main Server: " + ConvertFloat(preparedWebData.details["maimai DX CN Main"].uptime*100) + "%\n * MaimaiDXCN Title Server: " + ConvertFloat(preparedWebData.details["maimai DX CN Title"].uptime*100) + "%\n * MaimaiDXCN Update Server: " + ConvertFloat(preparedWebData.details["maimai DX CN Update"].uptime*100) + "%\n * MaimaiDXCN NetLogin Server: " + ConvertFloat(preparedWebData.details["maimai DX CN NetLogin"].uptime*100) + "%\n * MaimaiDXCN Net Server: " + ConvertFloat(preparedWebData.details["maimai DX CN DXNet"].uptime*100) + "%\n"
+  const FooterText = "\n* Title Server 爆炸 容易造成数据获取失败\n* Zlib 3% Loss 以下则 基本上可以正常游玩\n* 10% Loss 则会有明显断网现象(请准备小黑屋工具)\n* 30% Loss 则无法正常游玩(即使使用小黑屋工具)"
+  fullText = headerText + shownZlibText + WebStatusText + FooterText
+  fullText = fullText.replace(/\n/g, '<br>');
+  serverStatus = fullText
+  FinishedRequest.value = true
+}}
+
+onMounted(()=> {
+  status();
+});
 
 </script>
 
@@ -134,8 +176,7 @@ function linkToIntro() {
       <br> * 此网站使用 Vercel Web Analytics 对用户采集来源 (使用 UA, 访问地区)，仅用作于滥用判断统计<br>
       <br>* (仅当使用临时解锁功能时才会被采集信息，且数据对开发者匿名). <br>
       <br> * 开源地址 : <a href="https://github.com/MoYoez/mai-bind_LucyBot"> Click Here</a>. (Hook 部分不开源) <br>
-      <br> * TelegramBot @Lucy_HiMoYoBot || Q端 Lucy 谢谢喵<br>
-      <br> * MaimaiDXCN Status :<a href="https://arctanmai.mbrjun.cn/"> Here</a> 请根据 uptime 判断服务器可靠性 <br>
+      <br> * 可以参考使用的其他Bot => TelegramBot @Lucy_HiMoYoBot || Q端 Lucy (右上角图标) <br>
       <br>Visited: <img src="https://visitor-badge.laobi.icu/badge?page_id=Lucy_maibindsite"><br>
       
     </div>
@@ -174,6 +215,10 @@ function linkToIntro() {
     </div>
     <div class="result" v-if="isDataSentTemp">
       {{ replyTemp }}
+    </div>
+    <div class="form-path">
+    <h1> MaiMai 网络状况反馈~</h1>
+      <br> <div class="ServerStatus" v-html="serverStatus" v-if="FinishedRequest"> </div> <br>
     </div>
   </div>
 </div>
