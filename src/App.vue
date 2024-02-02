@@ -1,7 +1,7 @@
 <script lang="ts" setup xmlns="http://www.w3.org/1999/html">
 import { onMounted, reactive, ref} from 'vue';
 import type {ZlibStatus,ServerStatus} from './received';
-import { inject } from '@vercel/analytics';
+// import { inject } from '@vercel/analytics';
 
 
 const formInline = reactive({
@@ -97,7 +97,7 @@ async function generator () {
 let hash:string;
 let reply:string;
 let replyTemp:string;
-let serverStatus = "Loading..."
+let serverStatus:string
 
 const isDataSent = ref(false)
 const requestSending = ref(false)
@@ -142,10 +142,10 @@ if (getZlibData.ok && getWebData.ok) {
   } else {
     getLucyResponse = preparedZlibData.full["60"] - 180
   }
-  const headerText = "* Zlib 压缩跳过率可以很好的反馈当前 MaiNet (Wahlap Service) 当前负载的情况\n* Web Uptime Ping 则可以反馈 MaiNet 在外部原因(DDOS) 下造成的负载详情 ( 100% 即代表服务器为稳定, uptime 越低则代表可用性越差 ) \n* 在 1小时 内，Lucy 共处理了" + getLucyResponse+"次 请求💫，其中详细数据如下:\n\n"
-  const shownZlibText = "Zlib 压缩跳过率: " + "10mins (" + ConvertZlib(preparedZlibData.zlib_Error["10"],preparedZlibData.full["10"]) + "Loss)\n"+ "30mins (" + ConvertZlib(preparedZlibData.zlib_Error["30"],preparedZlibData.full["30"]) + "Loss)\n" + "60mins (" + ConvertZlib(preparedZlibData.zlib_Error["60"],preparedZlibData.full["60"]) + "Loss)\n"
-  const WebStatusText = "Web Uptime Ping:\n * MaimaiDXCN: " +ConvertFloat(preparedWebData.details["maimai DX CN"].uptime*100) + "%\n * MaimaiDXCN Main Server: " + ConvertFloat(preparedWebData.details["maimai DX CN Main"].uptime*100) + "%\n * MaimaiDXCN Title Server: " + ConvertFloat(preparedWebData.details["maimai DX CN Title"].uptime*100) + "%\n * MaimaiDXCN Update Server: " + ConvertFloat(preparedWebData.details["maimai DX CN Update"].uptime*100) + "%\n * MaimaiDXCN NetLogin Server: " + ConvertFloat(preparedWebData.details["maimai DX CN NetLogin"].uptime*100) + "%\n * MaimaiDXCN Net Server: " + ConvertFloat(preparedWebData.details["maimai DX CN DXNet"].uptime*100) + "%\n"
-  const FooterText = "\n* Title Server 爆炸 容易造成数据获取失败\n* Zlib 3% Loss 以下则 基本上可以正常游玩\n* 10% Loss 则会有明显断网现象(请准备小黑屋工具)\n* 30% Loss 则无法正常游玩(即使使用小黑屋工具)"
+  const headerText = "* Zlib 压缩跳过率可以很好的反馈当前 MaiNet (Wahlap Service) 当前负载的情况\n\n* Web Uptime Ping 则可以反馈 MaiNet 在外部原因(DDOS) 下造成的负载详情 ( 100% 即代表服务器为稳定, uptime 越低则代表可用性越差 ) \n\n* 在 1小时 内，Lucy 共处理了" + getLucyResponse+"次 请求💫，其中详细数据如下:\n\n"
+  const shownZlibText = "Zlib 压缩跳过率: \n\n" + " * 10mins (" + ConvertZlib(preparedZlibData.zlib_Error["10"],preparedZlibData.full["10"]) + "Loss)\n"+ " * 30mins (" + ConvertZlib(preparedZlibData.zlib_Error["30"],preparedZlibData.full["30"]) + "Loss)\n" + " * 60mins (" + ConvertZlib(preparedZlibData.zlib_Error["60"],preparedZlibData.full["60"]) + "Loss)\n"
+  const WebStatusText = "\n\nWeb Uptime Ping:\n\n * MaimaiDXCN: " +ConvertFloat(preparedWebData.details["maimai DX CN"].uptime*100) + "\n\n * MaimaiDXCN Main Server: " + ConvertFloat(preparedWebData.details["maimai DX CN Main"].uptime*100) + "\n\n * MaimaiDXCN Title Server: " + ConvertFloat(preparedWebData.details["maimai DX CN Title"].uptime*100) + "\n\n * MaimaiDXCN Update Server: " + ConvertFloat(preparedWebData.details["maimai DX CN Update"].uptime*100) + "\n\n * MaimaiDXCN NetLogin Server: " + ConvertFloat(preparedWebData.details["maimai DX CN NetLogin"].uptime*100) + "\n\n * MaimaiDXCN Net Server: " + ConvertFloat(preparedWebData.details["maimai DX CN DXNet"].uptime*100) + "\n"
+  const FooterText = "\nTips:\n - Title Server 爆炸 容易造成数据获取失败\n - Zlib 3% Loss 以下则 基本上可以正常游玩\n - 10% Loss 则会有明显断网现象(请准备小黑屋工具)\n - 30% Loss 则无法正常游玩(即使使用小黑屋工具)"
   fullText = headerText + shownZlibText + WebStatusText + FooterText
   fullText = fullText.replace(/\n/g, '<br>');
   serverStatus = fullText
