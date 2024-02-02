@@ -142,7 +142,7 @@ if (getZlibData.ok && getWebData.ok) {
   } else {
     getLucyResponse = preparedZlibData.full["60"] - 180
   }
-  const headerText = "* Zlib 压缩跳过率可以很好的反馈当前 MaiNet (Wahlap Service) 当前负载的情况\n\n* Web Uptime Ping 则可以反馈 MaiNet 在外部原因(DDOS) 下造成的负载详情 ( 100% 即代表服务器为稳定, uptime 越低则代表可用性越差 ) \n\n* 在 1小时 内，Lucy 共处理了" + getLucyResponse+"次 请求💫，其中详细数据如下:\n\n"
+  const headerText = "* Zlib 压缩跳过率可以很好的反馈当前 MaiNet (Wahlap Service) 当前负载的情况\n\n* Web Uptime Ping 则可以反馈 MaiNet 在外部原因(DDOS) 下造成的负载详情 \n( 100% 即代表服务器为稳定, uptime 越低则代表可用性越差 ) \n\n* 在 1小时 内，Lucy 共处理了" + getLucyResponse+"次 请求💫，其中详细数据如下:\n\n"
   const shownZlibText = "Zlib 压缩跳过率: \n\n" + " * 10mins (" + ConvertZlib(preparedZlibData.zlib_Error["10"],preparedZlibData.full["10"]) + "Loss)\n"+ " * 30mins (" + ConvertZlib(preparedZlibData.zlib_Error["30"],preparedZlibData.full["30"]) + "Loss)\n" + " * 60mins (" + ConvertZlib(preparedZlibData.zlib_Error["60"],preparedZlibData.full["60"]) + "Loss)\n"
   const WebStatusText = "\n\nWeb Uptime Ping:\n\n * MaimaiDXCN: " +ConvertFloat(preparedWebData.details["maimai DX CN"].uptime*100) + "\n\n * MaimaiDXCN Main Server: " + ConvertFloat(preparedWebData.details["maimai DX CN Main"].uptime*100) + "\n\n * MaimaiDXCN Title Server: " + ConvertFloat(preparedWebData.details["maimai DX CN Title"].uptime*100) + "\n\n * MaimaiDXCN Update Server: " + ConvertFloat(preparedWebData.details["maimai DX CN Update"].uptime*100) + "\n\n * MaimaiDXCN NetLogin Server: " + ConvertFloat(preparedWebData.details["maimai DX CN NetLogin"].uptime*100) + "\n\n * MaimaiDXCN Net Server: " + ConvertFloat(preparedWebData.details["maimai DX CN DXNet"].uptime*100) + "\n"
   const FooterText = "\nTips:\n - Title Server 爆炸 容易造成数据获取失败\n - Zlib 3% Loss 以下则 基本上可以正常游玩\n - 10% Loss 则会有明显断网现象(请准备小黑屋工具)\n - 30% Loss 则无法正常游玩(即使使用小黑屋工具)"
@@ -180,7 +180,7 @@ onMounted(()=> {
       <br>Visited: <img src="https://visitor-badge.laobi.icu/badge?page_id=Lucy_maibindsite"><br>
       
     </div>
-    <div class="form-path">
+    <div class="form-path font-smaller">
       <form>
      maiID: <input v-model="formInline.session" placeholder="Please Type Your maiid" class="inputbox" required />
         <br><br>
@@ -229,6 +229,7 @@ onMounted(()=> {
 html,body {
   width: 100%;
   height: 100%;
+  font-weight: bold;
   background: repeating-linear-gradient(45deg, #5bcefa, #5bcefa 10px, #f5a9b8 10px, #f5a9b8 20px, #fff 20px, #fff 30px);
   font-family: "Noto Sans CJK SC","serif";
   a {
@@ -334,6 +335,10 @@ html,body {
         border: 0 #66afe9;
         font-family: "Noto Sans CJK SC",serif;
       }
+    }
+    .ServerStatus {
+      font-weight: bold;
+      font-size: 14px;
     }
     .request-handler {
       position: relative;
