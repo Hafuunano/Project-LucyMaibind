@@ -1,7 +1,7 @@
 <script lang="ts" setup xmlns="http://www.w3.org/1999/html">
 import { onMounted, reactive, ref} from 'vue';
 import type {ZlibStatus,ServerStatus} from './received';
-// import { inject } from '@vercel/analytics';
+import { inject } from '@vercel/analytics';
 
 
 const formInline = reactive({
