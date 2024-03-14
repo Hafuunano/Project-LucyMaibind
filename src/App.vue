@@ -178,7 +178,7 @@ onMounted(()=> {
       <br> * 开源地址 : <a href="https://github.com/MoYoez/mai-bind_LucyBot"> Click Here</a>. (Hook 部分不开源) <br>
       <br> * 可以参考使用的其他Bot => TelegramBot @Lucy_HiMoYoBot || Q端 Lucy (右上角图标) <br>
       <br>Visited: <img src="https://visitor-badge.laobi.icu/badge?page_id=Lucy_maibindsite"><br>
-      
+
     </div>
     <div class="form-path font-smaller">
       <form>
@@ -203,6 +203,7 @@ onMounted(()=> {
          <br><span style="color:red">* 此link包含您的userid，请勿泄露</span>
       </div>
       <form class="form-path-temp">
+            ** 因为服务被人拿去咸鱼售卖, WEB 端关闭 **
         MaiID : <input v-model="tempUploader.session" placeholder="Please Type Your id" class="inputbox-temp" required />
         <br><br>
       </form>
